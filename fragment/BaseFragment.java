@@ -1,5 +1,6 @@
 package cn.bjsxt.youhuo.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,11 +16,12 @@ import cn.bjsxt.youhuo.MyApplication;
 public class BaseFragment extends Fragment {
     private MyApplication application;
     public Context context;
-
+    public Activity activity;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
+        activity = (Activity)context;
     }
 
     @Override

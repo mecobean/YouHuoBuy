@@ -1,5 +1,6 @@
 package cn.bjsxt.youhuo.adapter;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,10 +11,11 @@ import java.util.List;
  * 适配器的基类
  * 可以定义泛型 ，
  */
-public class BaseViewAdapter<T> extends BaseAdapter {
+public abstract class BaseViewAdapter<T> extends BaseAdapter {
     public List<T> list;
-
-    public BaseViewAdapter(List<T> list) {
+    public Context context;
+    public BaseViewAdapter(Context context, List<T> list) {
+        this.context = context;
         this.list = list;
     }
 
@@ -23,8 +25,8 @@ public class BaseViewAdapter<T> extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return position;
+    public T getItem(int position) {
+        return list.get(position);
     }
 
     @Override
@@ -32,8 +34,4 @@ public class BaseViewAdapter<T> extends BaseAdapter {
         return position;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
-    }
 }
